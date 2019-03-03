@@ -56,7 +56,7 @@ export default (state = INITIAL_STATE, action) =>{
         case SET_NEW_RECORD:
             const { newRecord, records, name} = state;
             let newRecords = [];
-            if(records.length > 0){
+            if(records !== null){
                 newRecords = [...records, {name, time: newRecord}];
             }else{
                 newRecords = [{name, time: newRecord}];

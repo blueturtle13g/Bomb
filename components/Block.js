@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {Text, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import {Text, StyleSheet, TouchableOpacity} from 'react-native';
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { openBlock, toggleFlag} from "../actions";
-
 import {LOST, PLAYING, WON} from "../actions/types";
-const w = Dimensions.get('window');
+import SplashScreen from "react-native-splash-screen";
 
 class Block extends Component {
+
+    componentDidMount() {
+        SplashScreen.hide();
+    }
 
     renderContent = (isOpen)=>{
         const { condition } = this.props.store;
         const { isBomb, number, isFlagged } = this.props.block;
-        if(!isOpen){
+        if(isOpen){
             return(
                 <Text style={[styles.text, condition === LOST && {color: "#ff7869"}, condition === WON && {color: "#60ff6d"} ]}>
                     {isBomb ? <MaterialCommunityIcons name={"bomb"} size={30} color={"#ff7869"}/>
@@ -54,8 +57,7 @@ export default connect(
 
 const styles = StyleSheet.create({
     container:{
-        width: w.width / 8,
-        height: w.height/14,
+        flex: 1,
         borderWidth: .3,
         backgroundColor: "#2b2b2b",
         borderColor: "#fff",

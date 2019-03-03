@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {View, StyleSheet, StatusBar} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 import {startGame, updateProp} from "../actions";
 import Record from './Record';
@@ -13,20 +13,18 @@ class Game extends Component {
         this.props.startGame();
         retrieveRecords().then((records) => {
             this.props.updateProp({key: "records", value: records});
-        })
+        });
     }
 
     render() {
         const {blocks, modalOpen} = this.props.store;
         return (
             <View style={styles.container}>
-                <StatusBar hidden/>
                 {blocks.map(block=>{
                     return(
-                        <Block
-                            block={block}
-                            key={block.id.toString()}
-                        />
+                        <View style={styles.blockCon} key={block.id.toString()}>
+                            <Block block={block}/>
+                        </View>
                     )
                 })}
                 <Bottom/>
@@ -46,8 +44,13 @@ export default connect(
 
 const styles = StyleSheet.create({
     container:{
+        flex: 1,
         flexDirection: "row",
         flexWrap: "wrap",
-        backgroundColor: "white"
+        backgroundColor: "#4a5a54"
     },
+    blockCon:{
+        height: "6.8%",
+        width: "12.5%"
+    }
 });

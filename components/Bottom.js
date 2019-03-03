@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {View, Text, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { connect } from 'react-redux';
 
 import { startGame, updateProp } from '../actions';
@@ -8,12 +8,9 @@ import {PLAYING} from "../actions/types";
 import { msToTime } from '../utils';
 
 let durationInterval = null;
-const w = Dimensions.get('window');
 
 class Bottom extends Component {
-    state={
-        duration: "00:00:00"
-    };
+    state={ duration: "00:00:00" };
 
     componentDidMount() {
         this.setDurationTimeOut();
@@ -40,13 +37,13 @@ class Bottom extends Component {
                         this.setDurationTimeOut();
                     }}
                 >
-                    <MaterialCommunityIcons name={"restart"} size={35} color={"#fff"}/>
+                    <MaterialCommunityIcons name={"restart"} size={27} color={"#2b2b2b"}/>
                 </TouchableOpacity>
                 <Text style={styles.text}>{duration.split('.')[0]}</Text>
                 <TouchableOpacity
                     onPress={()=> this.props.updateProp({key: "modalOpen", value: true})}
                 >
-                    <MaterialCommunityIcons name={"timer"} size={35} color={"#fff"}/>
+                    <MaterialCommunityIcons name={"timer"} size={27} color={"#2b2b2b"}/>
                 </TouchableOpacity>
             </View>
         );
@@ -61,15 +58,14 @@ export default connect(mapStateToProps, {startGame, updateProp})(Bottom);
 
 const styles = StyleSheet.create({
     container:{
+        height: 30,
         flexDirection: "row",
-        height: w.height/14,
         width: "100%",
-        backgroundColor: "purple",
         justifyContent: "space-around",
         alignItems: "center"
     },
     text: {
-        color: "#fffb8b",
+        color: "#fff",
         fontSize: 20
     }
 });

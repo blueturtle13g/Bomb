@@ -2,14 +2,14 @@ import {AsyncStorage} from "react-native";
 
 const getJustOpenPositives = ()=>{
     let justOpenPositives = [];
-    for(let i = 0; i <=103; i=i+8){
+    for(let i = 0; i <=111; i=i+8){
         justOpenPositives.push(i);
     }
     return justOpenPositives;
 };
 const getJustOpenNegatives = ()=>{
     let justOpenNegatives = [];
-    for(let i = 7; i <=103; i=i+8){
+    for(let i = 7; i <=111; i=i+8){
         justOpenNegatives.push(i);
     }
     return justOpenNegatives;
@@ -30,7 +30,7 @@ export const retrieveRecords = async ()=>{
 export const blockGen = ()=>{
     let blocks = [];
 
-    for(let i = 0; i <= 103; i++){
+    for(let i = 0; i <= 111; i++){
         blocks.push({
             id: i,
             isBomb: ((Math.floor(Math.random() * 5) + 1) === 1),
@@ -40,7 +40,7 @@ export const blockGen = ()=>{
         });
     }
 
-    for(let i = 0; i <= 103; i++){
+    for(let i = 0; i <= 111; i++){
         if(!blocks[i].isBomb){
             if(!justOpenPositives.includes(i)){
                 if(blocks[i-1]){

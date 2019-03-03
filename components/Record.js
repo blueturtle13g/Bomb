@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, ToastAndroid} from 'react-native';
 import {connect} from 'react-redux';
-import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
+import Entypo from "react-native-vector-icons/Entypo";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { msToTime } from '../utils';
 import { updateProp, setNewRecord } from '../actions';
