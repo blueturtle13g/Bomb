@@ -141,10 +141,7 @@ const styles = StyleSheet.create({
         position: "absolute",
         top: 7,
         left: 7,
-        zIndex: 2,
-        borderWidth: 1,
-        borderColor: "#fff",
-        borderRadius: 20
+        zIndex: 2
     },
     rank:{
         borderWidth: 1,

@@ -31,19 +31,21 @@ class Bottom extends Component {
         return (
             <View style={styles.container}>
                 <TouchableOpacity
+                    style={styles.button}
                     onPress={()=>{
                         this.props.startGame();
                         this.setState({duration: "00:00:00"});
                         this.setDurationTimeOut();
                     }}
                 >
-                    <MaterialCommunityIcons name={"restart"} size={27} color={"#2b2b2b"}/>
+                    <MaterialCommunityIcons name={"restart"} size={28} color={"#28b3d5"}/>
                 </TouchableOpacity>
                 <Text style={styles.text}>{duration.split('.')[0]}</Text>
                 <TouchableOpacity
+                    style={styles.button}
                     onPress={()=> this.props.updateProp({key: "modalOpen", value: true})}
                 >
-                    <MaterialCommunityIcons name={"timer"} size={27} color={"#2b2b2b"}/>
+                    <MaterialCommunityIcons name={"timer"} size={28} color={"#28b3d5"}/>
                 </TouchableOpacity>
             </View>
         );
@@ -58,14 +60,19 @@ export default connect(mapStateToProps, {startGame, updateProp})(Bottom);
 
 const styles = StyleSheet.create({
     container:{
-        height: 30,
         flexDirection: "row",
         width: "100%",
-        justifyContent: "space-around",
-        alignItems: "center"
+        justifyContent: "space-between",
+        alignItems: "center",
+        backgroundColor: "#466380"
     },
     text: {
         color: "#fff",
         fontSize: 20
+    },
+    button:{
+        width: "33.3%",
+        justifyContent: "center",
+        alignItems: "center",
     }
 });
